@@ -1,0 +1,23 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+int n;
+
+using namespace std;
+bool bfs(int m, int p, int q) {
+    if(!m) return true;
+    if(m >= p && bfs(m - p,p,q)) return true;
+    if(m >= q && bfs(m - q,p,q)) return true;
+    return false;
+}
+int main() {
+    int m;
+    cin >> n;
+    cin >> m;
+    int res = 0;
+    for (int i = 0; i <= 1000; i++) {
+        if(!bfs(i, n ,m))  res = i;
+    }
+    cout << res;
+    return 0;
+}
