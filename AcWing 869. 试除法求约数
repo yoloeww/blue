@@ -1,0 +1,25 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+set<int> get_devide(int x) {
+    set<int> res;
+    for (int i = 1; i <= x / i; i++) {
+        if (x % i == 0) {
+            res.insert(i);
+            if (i != x / i) res.insert(x / i);
+        }
+    }
+return res;
+}
+int main() {
+    cin >> n;
+    while (n --) {
+        int x;
+        cin >> x;
+        set<int> res = get_devide(x);
+        for (auto t : res) cout << t << " ";
+        cout << endl;
+    }
+    return 0;
+}
