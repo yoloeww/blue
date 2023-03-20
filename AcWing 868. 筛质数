@@ -1,0 +1,43 @@
+#include <iostream>
+const int N = 1e6+10;
+using namespace std;
+int prime[N], cnt;
+ bool st[N];
+
+// // 1.朴素筛法-O(nlogn)
+// void get_primes1(int n) {
+//     for(int i = 2; i <= n; i++) {
+//         if(!st[i]) prime[cnt++] = i;
+//         for(int j = i+i; j <= n; j += i) 
+//             st[j] = true;
+//     }
+// }
+// // 2.诶氏筛法 O(nloglogn)
+// void get_primes2(int n) {
+//     for(int i = 2; i <= n; i++) {
+//         if(!st[i]) {
+//             prime[cnt++] = i;
+//         for(int j = i+i; j <= n; j += i) 
+//             st[j] = true;
+//         }
+//     }
+// }
+//线性筛法-O(n), n = 1e7的时候基本就比埃式筛法快一倍了
+//算法核心：x仅会被其最小质因子筛去
+void get_primes3(int n) {
+    for(int i = 2; i <= n; i++) {
+        if(!st[i]) prime[cnt++] = i; // 刚开始都是false
+        for(int j = 0; prime[j] <= n / i; j ++) {
+            st[prime[j] * i] = true;
+            if(i % prime[j] == 0) break;
+        }
+    }
+}
+
+int main() {
+    int x;
+    cin >> x;
+    get_primes3(x);
+    cout << cnt << endl;
+    return 0;
+}
