@@ -1,0 +1,22 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+typedef unsigned long long ll;
+ll n = 2021041820210418;
+ll a[3000], cnt = 0; //存放因子
+
+int main() {
+   for(int i = 1; i <= n / i; i++){
+    if(n % i == 0){
+      a[++cnt] = i;
+      if(i != n / i) a[++cnt] = n / i;
+    }
+  }
+     ll res = 0;
+    for(int l = 1; l <= cnt; l++)
+     for(int w = 1; w <= cnt; w++)
+      for(int h = 1; h <= cnt; h++)
+     if(a[l]*a[w]*a[h] == n) res++;
+
+    cout <<cnt << endl;
+}
