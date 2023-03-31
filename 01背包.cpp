@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-const int N = 1005;
+const int N = 1010;
 int v[N]; // 体积
 int w[N]; // 价值
 int dp[N][N]; // j体积下前i个物品的最大值
