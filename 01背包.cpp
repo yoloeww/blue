@@ -1,5 +1,7 @@
+#include<bits>
 #include<iostream>
 using namespace std;
+
 const int N = 1010;
 int v[N]; // 体积
 int w[N]; // 价值
